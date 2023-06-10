@@ -20,11 +20,14 @@ function AdicionarTrabalho(/*props*/) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(trabalho)
     })
-      .then(resposta => resposta.json())
+      //.then(resposta => resposta.json())
       .then(dados => {
-        setTitulo('')
-        setArea('')
-        setResumo('')
+        if(dados.ok){
+          setTitulo('')
+          setArea('')
+          setResumo('')
+          alert('Trabalho cadastrado com sucesso')
+        }
         /*props.adicionarTrabalho(dados)*/
       })
   }
