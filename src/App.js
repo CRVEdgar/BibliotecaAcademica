@@ -1,25 +1,66 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { BrowserRouter as RouterDom, NavLink, Route, Routes } from 'react-router-dom';
+
+import Trabalhos from './components/Trabalhos/Trabalhos'
+import AdicionarTrabalho from './components/AdicionarTrabalho/AdicionarTrabalho';
+import Home from './components/Home/Home';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RouterDom>
+      <div className="App">
+        <header>
+          <nav>
+            <ul>
+              <li>
+                <NavLink to="/" exact>Início</NavLink>
+              </li>
+              <li>
+                <NavLink to="/trabalhos">Trabalhos Cadastrados</NavLink>
+              </li>
+              <li>
+                <NavLink to="/adicionar">Adicionar Trabalho</NavLink>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <main>
+          <Routes>
+            <Route path="/" exact element={<Home />} />
+            <Route path="/trabalhos" element={<Trabalhos />} />
+            <Route path="/adicionar" element={<AdicionarTrabalho />} />
+            <Route path="*" element={<PaginaoEncontrada />} />
+
+            {/*<Route path="/" exact>
+              <Home />
+            </Route>
+            <Route path="/trabalhos">
+              <Trabalhos />
+            </Route>
+            <Route path="/adicionar">
+              <AdicionarTrabalho />
+            </Route>
+            <Route path="*">
+              <h1>404</h1>
+              <p>Página não encontrada!</p>
+              </Route>
+            <Route path="*">
+              <PaginaoEncontrada></PaginaoEncontrada>
+            </Route>
+  */}
+          </Routes>
+        </main>
+      </div>
+    </RouterDom>
   );
+}
+
+function PaginaoEncontrada(){
+  return<>
+  <h1>404</h1>
+  <p>Página nao encontrada</p>
+  </>
 }
 
 export default App;
