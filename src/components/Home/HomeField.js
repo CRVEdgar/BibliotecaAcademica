@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik, useField } from 'formik'
 import * as yup from 'yup';
 
 import './Home.css'
-
+import DangerAlert from '../Alerts/DangerAlert';
 
 
 const InputComponent = ({ label, ...props }) => {
@@ -39,6 +39,31 @@ const SelectComponent = ({ label, options, ...props }) => {
           </option>
         ))}
       </select>
+      {meta.error && meta.touched ? (
+        <div className="invalid-feedback">{meta.error}</div>
+      ) : null}
+    </div>
+  );
+};
+
+const FileComponent = ({ label, ...props }) => {
+  const [field, meta, helpers] = useField(props);
+  const { setValue } = helpers;
+
+  const handleChange = (event) => {
+    const file = event.currentTarget.files[0];
+    setValue(file);
+  };
+
+  return (
+    <div className="form-group">
+      <label htmlFor={props.id}>{label}</label>
+      <input
+        type="file"
+        onChange={handleChange}
+        onBlur={field.onBlur}
+        className={meta.error && meta.touched ? 'is-invalid' : ''}
+      />
       {meta.error && meta.touched ? (
         <div className="invalid-feedback">{meta.error}</div>
       ) : null}
@@ -88,52 +113,53 @@ function HomeField() {
         
     });
 
-    const handleSubmit = async (values, { resetForm }) => {
-      const formData = new FormData();
-      formData.append('file', values.file);
-      formData.append('trabalhoRequest', JSON.stringify(values));
-  
-      try {
-        const response = await fetch('http://localhost:8000/digital-library', {
-          method: 'POST',
-          body: formData
-        });
-  
-        // Verifique a resposta e realize as ações necessárias
-        if (response.ok) {
-          // A requisição foi bem-sucedida
-          console.log('Arquivo enviado com sucesso!');
-          resetForm();
-        } else {
-          // A requisição falhou
-          console.error('Erro ao enviar arquivo:', response.status, response.statusText);
-        }
-      } catch (error) {
-        console.error('Erro na requisição:', error);
-      }
-    };
+    const [showAlert, setShowAlert] = useState(false);
+
+
 
     return <>
+    
+    {showAlert && <DangerAlert />}
 
         <Formik 
         initialValues={{ titulo: '', area: '', palavrasChave: '', codAutor: '', 
           codOrientador: '', data: '', file: null}}
         validationSchema={validationSchema}
-        onSubmit={handleSubmit}/*{values, {resetForm}handleSubmit => {*/
-        
+        onSubmit={(values, {resetForm}) => {
+          const formData = new FormData();
+          
+          const trabalhoRequest = {
+            titulo: values.titulo,
+            area: values.area,
+            palavrasChave: values.palavrasChave,
+            data: new Date(values.data).getFullYear(),
+            codAutor: values.codAutor,
+            codOrientador: values.codOrientador
+          };
 
-        /*const trabalhoRequest = values;
-        trabalhoRequest.data = new Date(values.data).getFullYear();
+          formData.append('file', values.file);
+          formData.append('trabalhoRequest', JSON.stringify(trabalhoRequest));
+          
+  
+          fetch('http://localhost:8000/digital-library/model', {
+            method: 'POST',
+            body: formData,
+          })
+            .then((response) => {
+              if (response.ok) {
+                // Handle successful response
+                setShowAlert(true);
+                //alert(JSON.stringify());
+                resetForm();
+              } else {
+                // Handle error response
+              }
+            })
+            .catch((error) => {
+              // Handle error
+            });
+        }}
 
-        fetch('http://localhost:8000/digital-library', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(trabalhoRequest)
-        })
-        /** CAPTURAR O ERRO VINDO DA API */
-        /*alert(JSON.stringify(values));
-        resetForm();
-        }}*/
         >
             {(props) =>(
                 <form  noValidate onSubmit={props.handleSubmit}>
@@ -154,6 +180,8 @@ function HomeField() {
                   label="Area de Pesquisa"
                   options={areaOptions}
                 />
+
+                <FileComponent id="file" name="file" label="Arquivo Digital"/>
 
                 
                 <button type="submit">Adicionar</button>
