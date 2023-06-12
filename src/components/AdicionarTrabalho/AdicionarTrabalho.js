@@ -38,7 +38,7 @@ function AdicionarTrabalho(/*props*/) {
       <form onSubmit={onSubmitHandler}>
         <div className="Linha">
           <div className="Coluna">
-            <label>Titulo</label>
+            <label htmlFor="titulo">Titulo</label>
             <input
               type="text"
               name="titulo"
@@ -48,7 +48,7 @@ function AdicionarTrabalho(/*props*/) {
             </input>
           </div>
           <div className="Coluna">
-            <label>Area</label>
+            <label htmlFor="area">Area</label>
             <input
               type="text"
               name="area"
@@ -60,7 +60,7 @@ function AdicionarTrabalho(/*props*/) {
         </div>
         <div className="Linha">
           <div className="Coluna">
-            <label>Resumo</label>
+            <label htmlFor="resumo">Resumo</label>
             <input
               type="text"
               name="resumo"

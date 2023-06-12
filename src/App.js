@@ -5,6 +5,7 @@ import { BrowserRouter as RouterDom, NavLink, Route, Routes } from 'react-router
 import Trabalhos from './components/Trabalhos/Trabalhos'
 import AdicionarTrabalho from './components/AdicionarTrabalho/AdicionarTrabalho';
 import Home from './components/Home/Home';
+import HomeField from './components/Home/HomeField';
 import DetalhesTrabalho from './components/DetalhesTrabalho/DetalhesTrabalho'
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
               <li>
                 <NavLink to="/adicionar">Adicionar Trabalho</NavLink>
               </li>
+              <li>
+                <NavLink to="/field">Home Field</NavLink>
+              </li>
             </ul>
           </nav>
         </header>
@@ -32,6 +36,7 @@ function App() {
             <Route path="/trabalhos/:identificador" element={<DetalhesTrabalho />} />
             <Route path="/trabalhos" element={<Trabalhos />} />
             <Route path="/adicionar" element={<AdicionarTrabalho />} />
+            <Route path="/field" element={<HomeField />} />
             <Route path="*" element={<PaginaoEncontrada />} />
 
             {/*<Route path="/" exact>
