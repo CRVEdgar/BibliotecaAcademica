@@ -32,9 +32,10 @@
 }
 
 .App nav {
-  padding: 0;
-  background-color: #FFEBF3;
+  /*padding: 0;*/
+  background-color: #22f8ca;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .14);
+  align-items: center;
 }
 
 .App nav ul {
@@ -54,15 +55,26 @@
 .App nav ul li a {
   display: block;
   padding: 1rem;
-  color: #DA3C78;
+  color: #009171;
   text-decoration: none;
+  font-size: 20px;
 }
 
 .App nav ul li a:hover {
-  background-color: #FFBCD8;
+  background-color: #09e4bf;
 }
 
 .App nav ul li a.active {
-  background-color: #FF6CA8;
+  background-color: #6be9ce;
   color: #fff;
+}
+
+.App .imgLogo {
+  max-width: 100%;
+  height: auto;
+}
+
+.logo-container {
+  flex-shrink: 0;
+  margin-right: 10px;
 }

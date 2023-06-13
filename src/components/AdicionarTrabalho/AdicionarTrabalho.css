@@ -2,7 +2,7 @@
   margin: 2rem 0;
   padding: 1.25rem;
   background-color: #FFF;
-  background-color: #FFEBF3;
+  background-color: #e1fef2;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .14);
 }
 
@@ -41,21 +41,33 @@
   line-height: 1.5;
   color: #495057;
   background-color: #FFF;
-  border: 1px solid #FFBCD8;
+  border: 1px solid #bef8d8;
   border-radius: .25rem;
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.AdicionarTrabalho .inputSp input {
+  width: 40%;
+}
+
+.AdicionarTrabalho .txarea textarea {
+  margin-top: .1rem;
+}
+
+.AdicionarTrabalho .txarea label {
+  margin-top: .6rem;
 }
 
 .AdicionarTrabalho button {
   color: #FFF;
   cursor: pointer;
   display: inline-block;
-  background-color: #FF6CA8;
+  background-color: #9ae0c4;
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
   padding: .375rem .75rem;
-  margin-top: .25rem;
+  margin-top: .80rem;
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.5;
@@ -65,10 +77,26 @@
 
 .AdicionarTrabalho input:focus, .AdicionarTrabalho button:focus {
   outline: 0;
-  border-color: #FF8CC8;
-  box-shadow: 0 0 0 .2rem rgba(255, 188, 216, .5);
+  border-color: #8cffc0;
+  box-shadow: 0 0 0 .2rem rgba(166, 247, 200, 0.5);
 }
 
 .AdicionarTrabalho button:hover {
-  background-color: #DA3C78;
+  background-color: #417580;
+}
+
+.AdicionarTrabalho .invalid-feedback {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: #dc3545;
+}
+
+.AdicionarTrabalho .is-invalid {
+  border-color: #dc3545;
+}
+
+.AdicionarTrabalho .is-invalid:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }

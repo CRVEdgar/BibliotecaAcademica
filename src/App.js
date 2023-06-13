@@ -7,27 +7,35 @@ import AdicionarTrabalho from './components/AdicionarTrabalho/AdicionarTrabalho'
 import Home from './components/Home/Home';
 import HomeField from './components/Home/HomeField';
 import DetalhesTrabalho from './components/DetalhesTrabalho/DetalhesTrabalho'
+import logo from './Imagens/logo-if.png'; 
 
 function App() {
   return (
     <RouterDom>
       <div className="App">
         <header>
-          <nav>
-            <ul>
-              <li>
-                <NavLink to="/" exact>Início</NavLink>
-              </li>
-              <li>
-                <NavLink to="/trabalhos">Trabalhos Cadastrados</NavLink>
-              </li>
-              <li>
-                <NavLink to="/adicionar">Adicionar Trabalho</NavLink>
-              </li>
-              <li>
-                <NavLink to="/field">Home Field</NavLink>
-              </li>
-            </ul>
+          <nav className="navbar navbar-expand-lg bg-primary">
+            <div className="container-fluid">
+              <div className="logo-container">
+                <img src={logo} className="imgLogo" alt="Logo" />
+              </div>
+              <div className="collapse navbar-collapse" id="navbarColor01">
+                <ul className="navbar-nav mx-auto">
+                  <li className="nav-item">
+                    <NavLink to="/" exact><strong>Início</strong></NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink to="/trabalhos"><strong>Trabalhos Cadastrados</strong></NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink to="/adicionar"><strong>Adicionar Trabalho</strong></NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink to="/field"><strong>Home Field</strong></NavLink>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </nav>
         </header>
         <main>

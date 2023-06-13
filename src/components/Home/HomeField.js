@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 import { Formik, useField } from 'formik'
 import * as yup from 'yup';
 
-import './Home.css'
-import DangerAlert from '../Alerts/DangerAlert';
 
+import './HomeField.css'
+import '../AdicionarTrabalho/AdicionarTrabalho.css'
+import 'bootswatch/dist/minty/bootstrap.css'
+
+import DangerAlert from '../Alerts/DangerAlert';
+import SuccessAlert from '../Alerts/SuccessAlert';
 
 const InputComponent = ({ label, ...props }) => {
     const [field, meta] = useField(props);
@@ -26,12 +30,13 @@ const InputComponent = ({ label, ...props }) => {
 const SelectComponent = ({ label, options, ...props }) => {
   const [field, meta] = useField(props);
   return (
-    <div className="form-group">
+    <div className="form-group" id="idcbx">
       <label htmlFor={props.id}>{label}</label>
       <select
         {...field}
         {...props}
         className={meta.error && meta.touched ? 'is-invalid' : ''}
+        id="comboBox"
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>
@@ -56,13 +61,31 @@ const FileComponent = ({ label, ...props }) => {
   };
 
   return (
-    <div className="form-group">
+    <div className="inputSp">
       <label htmlFor={props.id}>{label}</label>
       <input
         type="file"
         onChange={handleChange}
         onBlur={field.onBlur}
         className={meta.error && meta.touched ? 'is-invalid' : ''}
+      />
+      {meta.error && meta.touched ? (
+        <div className="invalid-feedback">{meta.error}</div>
+      ) : null}
+    </div>
+  );
+};
+
+const TextAreaComponent = ({ label, ...props }) => {
+  const [field, meta] = useField(props);
+  return (
+    <div className="form-group">
+      <label htmlFor={props.id}>{label}</label>
+      <textarea
+        {...field}
+        {...props}
+        className={`form-control ${meta.error && meta.touched ? 'is-invalid' : ''}`}
+        rows="10"
       />
       {meta.error && meta.touched ? (
         <div className="invalid-feedback">{meta.error}</div>
@@ -109,21 +132,39 @@ function HomeField() {
           .required('Infome a área de pesquisa'),
         file: yup
           .mixed()
-          .required('Inclua o Arquivo Digital com o Trabalho')
+          .required('Inclua o Arquivo Digital com o Trabalho'),
+        resumo: yup
+          .mixed()
+          .required('Preencha o resumo do seu trabalho')
         
     });
 
-    const [showAlert, setShowAlert] = useState(false);
+    const [showDangerAlert, setShowDangerAlert] = useState(false);
+    const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
+    const handleDangerAlertClose = () => {
+      setShowDangerAlert(false);
+    };
+
+    const handleSuccessAlertClose = () => {
+      setShowSuccessAlert(false);
+    }
 
 
     return <>
-    
-    {showAlert && <DangerAlert />}
 
+    <DangerAlert
+      showAlert={showDangerAlert}
+      onCloseAlert={handleDangerAlertClose}
+    />
+    <SuccessAlert
+      showAlert={showSuccessAlert}
+      onCloseAlert={handleSuccessAlertClose}
+    />
+    
         <Formik 
         initialValues={{ titulo: '', area: '', palavrasChave: '', codAutor: '', 
-          codOrientador: '', data: '', file: null}}
+          codOrientador: '', data: '', file: null, resumo: ''}}
         validationSchema={validationSchema}
         onSubmit={(values, {resetForm}) => {
           const formData = new FormData();
@@ -134,7 +175,8 @@ function HomeField() {
             palavrasChave: values.palavrasChave,
             data: new Date(values.data).getFullYear(),
             codAutor: values.codAutor,
-            codOrientador: values.codOrientador
+            codOrientador: values.codOrientador,
+            resumo: values.resumo
           };
 
           formData.append('file', values.file);
@@ -147,44 +189,46 @@ function HomeField() {
           })
             .then((response) => {
               if (response.ok) {
-                // Handle successful response
-                setShowAlert(true);
-                //alert(JSON.stringify());
+                setShowSuccessAlert(true);
                 resetForm();
               } else {
-                // Handle error response
+                setShowDangerAlert(true);
               }
             })
             .catch((error) => {
-              // Handle error
+              setShowDangerAlert(true);
             });
         }}
 
         >
             {(props) =>(
                 <form  noValidate onSubmit={props.handleSubmit}>
-                
-                <InputComponent id="titulo" name="titulo" type="text" label="Titulo"/>
+                <div className="AdicionarTrabalho">
+                  <InputComponent id="titulo" name="titulo" type="text" label="Titulo"/>
 
-                <InputComponent id="palavrasChave" name="palavrasChave" type="text" label="Palavras-Chave"/>
+                  <InputComponent id="palavrasChave" name="palavrasChave" type="text" label="Palavras-Chave"/>
 
-                <InputComponent id="codAutor" name="codAutor" type="text" label="Codigo Autor"/>
+                  <InputComponent id="codAutor" name="codAutor" type="text" label="Codigo Autor"/>
 
-                <InputComponent id="codOrientador" name="codOrientador" type="text" label="Codigo do Orientador"/>
-                
-                <InputComponent id="data" name="data" type="date" label="Data de Publicacao"/>
+                  <InputComponent id="codOrientador" name="codOrientador" type="text" label="Codigo do Orientador"/>
+                  
+                  <div className="inputSp">
+                    <InputComponent id="data" name="data" type="date" label="Data de Publicacao"/>
+                  </div>
+                  <div className="form-group">
+                    <SelectComponent id="area" name="area" label="Area de Pesquisa" options={areaOptions} />
+                  </div>
+                  <div className="inputSp">
+                    <FileComponent id="file" name="file" label="Arquivo Digital"/>
+                  </div>
 
-                <SelectComponent
-                  id="area"
-                  name="area"
-                  label="Area de Pesquisa"
-                  options={areaOptions}
-                />
+                  <div className="txarea">
+                    <TextAreaComponent id="resumo" name="resumo" type="text" label="Resumo"/>
+                  </div>
+                  
+                  <button type="submit">Adicionar</button>
 
-                <FileComponent id="file" name="file" label="Arquivo Digital"/>
-
-                
-                <button type="submit">Adicionar</button>
+                </div>
                 </form>
 
             )}
