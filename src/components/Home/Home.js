@@ -45,7 +45,7 @@ function Home() {
                     id="nome" 
                     name="nome" 
                     type="text"
-                    value={props.values.nome} //captura o valor inicial com os values do metodo "initialValues" do Formik
+                    value={props.values.nome}
                     onChange={props.handleChange}
                     onBlur={props.handleBlur}
                     className={props.errors.nome && props.touched.nome ? 'is-invalid' : ''}
