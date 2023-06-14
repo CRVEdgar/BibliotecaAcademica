@@ -1,0 +1,29 @@
+#accordionsButton .accordionsbox{
+    box-shadow: none;
+    border-color: none;
+}
+
+#accordionsButton button{
+    background-color: #ffe4dc;
+    width: 100%;
+    align-items: center;
+    border-color: #f8c5b5;
+    
+}
+
+#accordionsButton #rlzBuscar button{
+    width: 15%;
+    background-color: #9ae0c4;
+    color: #FFF;
+}
+
+#accordionsButton #rlzBuscar button:hover,
+#accordionsButton #rlzBuscar button:focus {
+    color: #FFF;
+    background-color: #417580;
+  }
+
+#accordionsButton input{
+    width: 25%;
+}
+

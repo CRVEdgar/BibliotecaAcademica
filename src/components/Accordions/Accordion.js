@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
+import './Accordions.css'
 
 function AccordionItem({ title, endpoint, inputType }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -19,6 +20,7 @@ function AccordionItem({ title, endpoint, inputType }) {
 const handleSearch = () => {
   // Realiza a busca na API com base no parâmetro searchParam e endpoint específico
   const apiUrl = endpoint.replace('${param}', searchParam);
+  console.log("endpoint chamado: ", apiUrl)
   setIsSearching(true);
   setShowNoResultsMessage(false);
   setErrorMessage('');
@@ -51,9 +53,10 @@ const handleSearch = () => {
   };
 
   return (
-    <div className="accordion-item">
+    <div className="accordion-item accordionsbox ">
       <h2 className="accordion-header">
         <button
+        //style={{ "--bs-accordion-border-color": "transparent" }}
           className={`accordion-button${isExpanded ? ' expanded' : ''}`}
           type="button"
           onClick={handleToggle}
@@ -72,15 +75,21 @@ const handleSearch = () => {
               />
             ) : (
               <select value={searchParam} onChange={handleInputChange}>
-                <option value="">Selecione uma opção</option>
-                <option value="opcao1">Opção 1</option>
-                <option value="opcao2">Opção 2</option>
-                <option value="opcao3">Opção 3</option>
+                <option value="">Selecione</option>
+                <option value="MATEMATICA">Matematica, Calculo, Raciocínio Lógico</option>
+                <option value="LETRAS">Linguagens, Literatura, Gramatica</option>
+                <option value="COMPUTAÇÃO">Tecnologia, Ciencia de Dados, Inteligencia Artificial</option>
+                <option value="ENGENHARIA">Engenharia, Produção, Inovação</option>
+                <option value="EDUCACAO">Educação, Ensino, Aprendizagem</option>
+                <option value="BIOLOGIA">Biologia, Ecossistema, Saude, Animal, Vegetal, Natureza</option>
+                
               </select>
             )}
-            <button type="button" onClick={handleSearch}>
-              Realizar busca
-            </button>
+            <div id="rlzBuscar">
+              <button type="button" onClick={handleSearch}>
+                Realizar busca
+              </button>
+            </div>
             {isSearching ? (
               <p>Realizando busca...</p>
             ) : showNoResultsMessage ? (
@@ -103,22 +112,18 @@ const handleSearch = () => {
 
 function Accordion() {
   return (
-    <div className="accordion">
+    <div className="accordion" id="accordionsButton">
       <AccordionItem
-        title="Accordion Item #1"
+        title="Buscar por Ano"
         endpoint="http://localhost:8000/digital-library/ano/${param}"
         inputType="text"
       />
       <AccordionItem
-        title="Accordion Item #2"
+        title="Buscar por Area"
         endpoint="http://localhost:8000/digital-library/area/?area=${param}"
-        inputType="text"
-      />
-      <AccordionItem
-        title="Accordion Item #3"
-        endpoint="http://localhost:8000/digital-library/opcao/${param}"
         inputType="select"
       />
+      
     </div>
   );
 }
