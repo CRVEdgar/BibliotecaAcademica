@@ -27,3 +27,23 @@
     width: 25%;
 }
 
+#selectAreas {
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #c5faea;
+    width: 420px;
+    background-color: #ffefea;
+  }
+  
+  #selectAreas option {
+    /*font-size: 14px;*/
+    font-size: 1rem;
+    /*background-color:  rgba(196, 248, 224, 0.5);*/
+    background-color: #ffefea;
+    color: #333;
+  }
+  
+  #selectAreas option:first-child {
+    color: #888;
+  }

@@ -54,3 +54,59 @@
     --bs-accordion-active-color: var(--bs-primary-text-emphasis);
     --bs-accordion-active-bg: var(--bs-primary-bg-subtle);
 }
+
+
+/*
+.imagemEsquerda {
+  width: 10%;
+  float: left;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.imagemDireita {
+  width: 13%;
+  float: right;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.titulo {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+*/
+
+.alinhamento {
+  margin-top: 10px;
+}
+
+.imagensInicio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.imagemEsquerda,
+.imagemDireita {
+  flex: 1;
+  text-align: center;
+}
+
+#tamanhoDir img{
+  width: 40%;
+}
+
+#tamanhoEsq img{
+  width: 55%;
+}
+
+.titulo {
+  text-align: center;
+}

@@ -74,7 +74,7 @@ const handleSearch = () => {
                 onChange={handleInputChange}
               />
             ) : (
-              <select value={searchParam} onChange={handleInputChange}>
+              <select value={searchParam} onChange={handleInputChange} id="selectAreas">
                 <option value="">Selecione</option>
                 <option value="MATEMATICA">Matematica, Calculo, Raciocínio Lógico</option>
                 <option value="LETRAS">Linguagens, Literatura, Gramatica</option>

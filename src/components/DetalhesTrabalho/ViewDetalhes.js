@@ -46,13 +46,13 @@ function ViewDetalhes() {
       <div className="tabelaArea">
         <table className="table itemDisplayTable">
             <tr><td className="metadataFieldLabel"><strong>Título:&nbsp;</strong></td><td className="metadataFieldValue"> {trabalho.titulo} </td></tr>
-            <tr><td className="metadataFieldLabel"><strong>Autor(es):&nbsp;</strong></td><td class="metadataFieldValue"> {trabalho.autor} </td></tr>
-            <tr><td className="metadataFieldLabel"><strong>Palavras-chave:&nbsp;</strong></td><td class="metadataFieldValue"> {trabalho.palavrasChave} </td></tr>
-            <tr><td className="metadataFieldLabel"><strong>Ano da publicação:&nbsp;</strong></td><td class="metadataFieldValue"> {trabalho.ano} </td></tr>
-            <tr><td className="metadataFieldLabel"><strong>Orientador(a):&nbsp;</strong></td><td class="metadataFieldValue"> {trabalho.orientador} </td></tr>
-            <tr><td className="metadataFieldLabel"><strong>Resumo:&nbsp;</strong></td><td class="metadataFieldValue"> <p className="justify-text">{trabalho.resumo}</p> </td></tr>
-            <tr><td className="metadataFieldLabel"><strong>URI:&nbsp;</strong></td><td class="metadataFieldValue"><a href="http://localhost:8000/digital-library/identificador/${identificador}" >  `http://localhost:8000/digital-library/identificador/{identificador}` </a></td></tr>
-            <tr><td className="metadataFieldLabel"><strong>Area de Pesquisa:</strong></td><td class="metadataFieldValue"> {trabalho.area} <br/> </td></tr>
+            <tr><td className="metadataFieldLabel"><strong>Autor(es):&nbsp;</strong></td><td className="metadataFieldValue"> {trabalho.autor} </td></tr>
+            <tr><td className="metadataFieldLabel"><strong>Palavras-chave:&nbsp;</strong></td><td className="metadataFieldValue"> {trabalho.palavrasChave} </td></tr>
+            <tr><td className="metadataFieldLabel"><strong>Ano da publicação:&nbsp;</strong></td><td className="metadataFieldValue"> {trabalho.ano} </td></tr>
+            <tr><td className="metadataFieldLabel"><strong>Orientador(a):&nbsp;</strong></td><td className="metadataFieldValue"> {trabalho.orientador} </td></tr>
+            <tr><td className="metadataFieldLabel"><strong>Resumo:&nbsp;</strong></td><td className="metadataFieldValue"> <p className="justify-text">{trabalho.resumo}</p> </td></tr>
+            <tr><td className="metadataFieldLabel"><strong>URI:&nbsp;</strong></td><td className="metadataFieldValue"><a href="http://localhost:8000/digital-library/identificador/${identificador}" >  `http://localhost:8000/digital-library/identificador/{identificador}` </a></td></tr>
+            <tr><td className="metadataFieldLabel"><strong>Area de Pesquisa:</strong></td><td className="metadataFieldValue"> {trabalho.area} <br/> </td></tr>
         </table>
       </div>
       
