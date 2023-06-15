@@ -75,6 +75,26 @@
     background-color: #f1fffc;
   }
 
+  .tabelaArea p{
+    color: black;
+    
+  }
+
   .tabelaArea strong{
     color: black;
   }
+
+  .tabelaArea table {
+    border-collapse: separate;
+    border-spacing: 15px;
+  }
+  
+  .tabelaArea td {
+    padding: 5px;
+  }
+
+  #tabelaTrabalho h3{
+    align-items: center;
+  }
+
+  
