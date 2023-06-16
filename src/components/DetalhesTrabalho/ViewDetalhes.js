@@ -83,32 +83,36 @@ function ViewDetalhes() {
       </div>
       
         <br/>
-        <div className="panel panel-info">
-          <div class="panel-heading">
-            Arquivos associados a este item:
+        <div className="panel panel-info" id="tableArquivos">
+          <div className="panel-heading titleHeading">
+            <h5>Arquivos associados ao Projeto:</h5>
           </div>
-            <table className="table panel-body">
+            <table className="table colorTable">
               <tr>
-                <th id="t1" class="standard">Arquivo</th>
+                <th id="t1" className="standard">Arquivo</th>
                 <th id="t2" className="standard">Descrição</th>
                 <th id="t3" className="standard">Tamanho</th>
                 <th id="t4" class="standard">Formato</th>
                 <th>&nbsp;</th>
               </tr>
               <tr>
-                <td headers="t1" claclassNamess="standard">
+                <td headers="t1" claclassNames="standard">
                   <a target="_blank" href={URIDownload}> {identificador} </a>
                 </td>
                 <td headers="t2" class="standard"> Trabalho de Conclusão de Curso </td>
                 <td headers="t3" class="standard">1,36 MB</td>
                 <td headers="t4" class="standard">PDF</td>
-                <td class="standard" align="center">
-                  <a class="btn btn-primary" 
-                    target="_blank" 
-                    onClick={handleVisualizarAbrir}
-                    >
-                    Visualizar/Abrir
-                  </a>
+                <td className="standard" align="center">
+                  <div id="divBTN">
+                    <a 
+                      id="btnView"
+                      className="btn btn-primary btnfake" 
+                      target="_blank" 
+                      onClick={handleVisualizarAbrir}
+                      >
+                      Visualizar/Abrir
+                    </a>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -119,7 +123,14 @@ function ViewDetalhes() {
                 <td headers="t3" class="standard">82,83 kB</td>
                 <td headers="t4" class="standard">PDF</td>
                 <td class="standard" align="center">
-                  <a class="btn btn-primary" target="_blank" href="/bitstream/123456789/4178/2/Termo%20de%20Autoriza%c3%a7%c3%a3o.pdf">Visualizar/Abrir</a>
+                  <div id="divBTN">
+                    <a
+                    id="btnView" 
+                    className="btn btn-primary btnfake" 
+                    target="_blank" 
+                    href={termoAutorizacao}
+                    >Visualizar/Abrir</a>
+                  </div>
                 </td>
               </tr>
             </table>

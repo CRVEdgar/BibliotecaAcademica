@@ -62,11 +62,13 @@
 
 .App nav ul li a:hover {
   background-color: #09e4bf;
+  border-radius: 15px;
 }
 
 .App nav ul li a.active {
   background-color: #6be9ce;
   color: #fff;
+  border-radius: 15px;
 }
 
 .App .imgLogo {
