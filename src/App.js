@@ -44,6 +44,8 @@ function App() {
             </div>
           </nav>
         </header>
+        <div className="app-content">
+
         <main>
           <Routes>
             <Route path="/" exact element={<Inicio />} />
@@ -58,9 +60,10 @@ function App() {
 
           </Routes>
         </main>
+        </div>
 
       <Footer></Footer>
-      
+
       </div>
     </RouterDom>
   );
