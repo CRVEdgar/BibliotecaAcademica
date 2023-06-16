@@ -1,28 +1,29 @@
 import React, { useState, useEffect } from 'react'
 
 import Trabalho from '../Trabalho/Trabalho'
+import Autor from './Autor'
 
-function Trabalhos() {
+function Autores() {
 
-  const [trabalhos, setTrabalhos] = useState([])
+  const [autores, setAutores] = useState([])
 
   useEffect(() => {
     fetch('http://localhost:8000/digital-library/all')
     .then(resposta => resposta.json())
     .then(dados => {
       if(dados){
-        const trabalhos = dados.map(trabalho => ({
-          identificador: trabalho.identificador,
+        const autores = dados.map(trabalho => ({
+          autor: trabalho.nomeAutor,
           titulo: trabalho.titulo,
           area: trabalho.area,
-          ano: trabalho.ano,
-          resumo: trabalho.resumo
+          ano: trabalho.ano
+        
         }))
   
-        setTrabalhos(trabalhos)
+        setAutores(autores)
 
       }else{
-        window.alert('Nao há Trabalhos Acadêmicos cadastrados')
+        window.alert('Nao há Autores cadastrados')
       }
       
     })
@@ -31,8 +32,8 @@ function Trabalhos() {
   return (
     <>
 
-      {trabalhos.map(trabalho => (
-        <Trabalho key={trabalho.identificador}
+      {autores.map(trabalho => (
+        <Autor key={trabalho.titulo}
           trabalho={trabalho}
         />
       ))}
@@ -40,4 +41,4 @@ function Trabalhos() {
   )
 }
 
-export default Trabalhos
+export default Autores

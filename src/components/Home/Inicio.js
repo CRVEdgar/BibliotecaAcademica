@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+
 
 import 'bootswatch/dist/minty/bootstrap.css'
 import logo from './logo.jpg';
@@ -27,15 +27,12 @@ function Inicio() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(filter)
     })
-      //.then(resposta => resposta.json())
       .then(dados => {
         if(dados.ok){
-          /*setTitulo('')
-          setArea('')
-          setResumo('')*/
-          alert('Trabalho cadastrado com sucesso')
+
+          console.log("trabalhos Localizados");
+          
         }
-        /*props.adicionarTrabalho(dados)*/
       })
   }
 
@@ -66,20 +63,6 @@ function Inicio() {
                     <Busca></Busca>
                     </div>
                 </form>
-                
-               {/* <form onSubmit={onSubmitHandler} className="form-horizontal col-md-12 form-group form-group-lg">
-                    <div className="col-md-12 searchbox">
-                        <div className="col-md-11">
-                            <input type="text" className="form-control" placeholder="Buscar no ADTA-IFMA" name="query" id="tequery" size="25" 
-                            value={textoInformado}
-                            onChange={event => setTextoInformado(event.target.value)}
-                            />
-                        </div>
-                        <div className="col-md-1">
-                            <button type="submit">Buscar</button>
-                        </div>
-                    </div>
-    </form>*/}
 
                 <h3>Documentos depositados</h3>
 

@@ -10,6 +10,8 @@ import HomeField from './components/Home/HomeField';
 import DetalhesTrabalho from './components/DetalhesTrabalho/DetalhesTrabalho'
 import Detalhes from './components/DetalhesTrabalho/Detalhes';
 import ViewDetalhes from './components/DetalhesTrabalho/ViewDetalhes';
+import Autores from './components/Autores/Autores';
+import Footer from './components/Footer/Footer';
 
 import logo from './Imagens/logo-if.png'; 
 
@@ -32,10 +34,10 @@ function App() {
                     <NavLink to="/trabalhos"><strong>Trabalhos Cadastrados</strong></NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink to="/adicionar"><strong>Adicionar Trabalho</strong></NavLink>
+                    <NavLink to="/autores"><strong>Autores Cadastrados</strong></NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink to="/field"><strong>Home Field</strong></NavLink>
+                    <NavLink to="/field"><strong>Adicionar Trabalho</strong></NavLink>
                   </li>
                 </ul>
               </div>
@@ -47,31 +49,18 @@ function App() {
             <Route path="/" exact element={<Inicio />} />
             <Route path="/trabalhos/:identificador" element={<DetalhesTrabalho />} />
             <Route path="/trabalhos" element={<Trabalhos />} />
-            <Route path="/adicionar" element={<AdicionarTrabalho />} />
+            {/*<Route path="/adicionar" element={<AdicionarTrabalho />} />*/}
+            <Route path="/autores" element={<Autores />} />
             <Route path="/detalhes" element={<Detalhes/>} />
             <Route path="/viewdetalhes/:identificador" element={<ViewDetalhes/>} />
             <Route path="/field" element={<HomeField />} />
             <Route path="*" element={<PaginaoEncontrada />} />
 
-            {/*<Route path="/" exact>
-              <Home />
-            </Route>
-            <Route path="/trabalhos">
-              <Trabalhos />
-            </Route>
-            <Route path="/adicionar">
-              <AdicionarTrabalho />
-            </Route>
-            <Route path="*">
-              <h1>404</h1>
-              <p>Página não encontrada!</p>
-              </Route>
-            <Route path="*">
-              <PaginaoEncontrada></PaginaoEncontrada>
-            </Route>
-  */}
           </Routes>
         </main>
+
+      <Footer></Footer>
+      
       </div>
     </RouterDom>
   );

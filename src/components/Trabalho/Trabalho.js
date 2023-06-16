@@ -22,10 +22,10 @@ function Trabalho(props) {
         <li><strong>Area:</strong> {props.trabalho.area}</li>
         <li><strong>Ano:</strong> {props.trabalho.ano}</li>
         <li><strong>Resumo:</strong> {limitarResumo(props.trabalho.resumo)}</li>
-        <li> <Link to={`/trabalhos/${props.trabalho.identificador}`}>Detalhes</Link> </li>
+        <li> <Link to={`/viewdetalhes/${props.trabalho.identificador}`}>Detalhes</Link> </li>
 
       </ul>
-      {/*<button onClick={props.removerUsuario}>&times;</button>*/}
+
     </div>
   )
 }

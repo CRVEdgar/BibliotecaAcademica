@@ -29,6 +29,7 @@ function DetalhesTrabalho() {
 
   if (trabalho.identificador !== undefined) {
     return <>
+    <h1>AUQI</h1>
       <h1>{trabalho.titulo}</h1>
       <h4>Autor: {trabalho.autor}</h4>
       <h4>Orientador: {trabalho.orientador}</h4>
