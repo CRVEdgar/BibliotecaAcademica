@@ -183,7 +183,7 @@ function HomeField() {
           formData.append('trabalhoRequest', JSON.stringify(trabalhoRequest));
           
   
-          fetch('http://localhost:8000/digital-library/model', {
+          fetch('http://localhost:8000/digital-library/save', {
             method: 'POST',
             body: formData,
           })
