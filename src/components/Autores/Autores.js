@@ -3,9 +3,12 @@ import React, { useState, useEffect } from 'react'
 import Trabalho from '../Trabalho/Trabalho'
 import Autor from './Autor'
 
+import PaginaoEncontrada from '../Trabalhos/PaginaoEncontrada'
+
 function Autores() {
 
   const [autores, setAutores] = useState([])
+  const [erroConexao, setErroConexao] = useState(false);
 
   useEffect(() => {
     fetch('http://localhost:8000/digital-library/all')
@@ -27,7 +30,15 @@ function Autores() {
       }
       
     })
+    .catch(error => {
+        console.error('Erro ao estabelecer conexão com o servidor:', error);
+        setErroConexao(true);
+      });
   }, [])
+
+  if (erroConexao) {
+    return <PaginaoEncontrada />;
+  }
 
   return (
     <>
